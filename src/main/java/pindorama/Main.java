@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class Main {
 
     public static void main(String[] args) {
-      var info =  SpringApplication.run(Main.class, args);
-      info.setId("Pindorama");
+        SpringApplication.run(Main.class, args);
     }
 
     @GetMapping(path = "/")
-    public String welcomePindoramaApi(){
+    public String welcomePindoramaApi() {
         return "Pindorama API: 1.0v";
     }
 

@@ -44,7 +44,7 @@ public class Login {
 
             return "Logado com sucesso!";
         }
-        RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/Login/logue.html");
+        RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/Login/logue.jsp");
         response.getOutputStream().print("<font color=red>Email/Senha estão incorretos..</font>");
         rd.include(request, response);
         return "Logado com sucesso!";
