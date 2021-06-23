@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="pt-br">
 
 <head>
@@ -36,6 +38,22 @@
         </nav>
     </main>
 
+    <c:if test="${param.userNotFound}">
+        <h1>Usuario não encontrado!</h1>
+    </c:if>
+
+    <c:if test="${param.userLoginSuccess}">
+        <h1>Logado com sucesso!</h1>
+    </c:if>
+
+    <c:if test="${param.userLoginFail}">
+        <h1>Senha incorretos!</h1>
+    </c:if>
+
+
+
+    <c:url value="/api/login" var="login_url"/>
+
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -43,7 +61,7 @@
                     <img src="images/img-01.png" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form">
+                <form:form class="login100-form validate-form" method="post" action="${login_url}">
                     <span class="login100-form-title">
 								Login
 							</span>
@@ -59,7 +77,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Password is
 								required">
-                        <input class="input100" type="password" name="pass" placeholder="Senha" required>
+                        <input class="input100" type="password" name="password" placeholder="Senha" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
 									<i class="fa fa-lock" aria-hidden="true"></i>
@@ -108,7 +126,7 @@
 								</a>
 
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

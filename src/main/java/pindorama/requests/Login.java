@@ -2,6 +2,8 @@ package pindorama.requests;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pindorama.database.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -17,14 +19,15 @@ public class Login {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.POST, path = "/login")
-    public String doLogin(HttpServletResponse response, HttpServletRequest request,
-                        @RequestParam(value = "email") String email,
-                        @RequestParam(value = "password") String password) throws Exception {
+    public ModelAndView doLogin(HttpServletResponse response, HttpServletRequest request, RedirectAttributes attributes,
+                                @RequestParam(value = "email") String email,
+                                @RequestParam(value = "password") String password) throws Exception {
 
         var user = userService.getUserByEmail(email);
 
         if (user == null) {
-            return "Not Found user.";
+            attributes.addAttribute("userNotFound", true);
+            return new ModelAndView("redirect:/login/logue.jsp");
         }
 
         if (user.getPassword().equals(password)) {
@@ -42,12 +45,11 @@ public class Login {
             Cookie cookie = new Cookie("message", "welcome pindorama");
             response.addCookie(cookie);
 
-            return "Logado com sucesso!";
+            attributes.addAttribute("userLoginSuccess", true);
+            return new ModelAndView("redirect:/login/logue.jsp");
         }
-        RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/Login/logue.jsp");
-        response.getOutputStream().print("<font color=red>Email/Senha estão incorretos..</font>");
-        rd.include(request, response);
-        return "Logado com sucesso!";
+        attributes.addAttribute("userLoginFail", true);
+        return new ModelAndView("redirect:/login/logue.jsp");
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/forgot_pass")
