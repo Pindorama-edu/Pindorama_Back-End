@@ -1,0 +1,43 @@
+<configuration debug="false">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <file>logs/Finn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/Finn.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd-MM-yyyy}] [%d{HH:mm:ss}] [%t/%level] [%logger{0}]: %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern> %boldMagenta([%d{dd-MM-yyyy}]) %boldMagenta([%d{HH:mm:ss}]) [%green(%t)/%highlight(%level)] %boldBlue([%logger{0}] %X{jda.shard}): %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="DG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/debug/debug.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/debug/debug.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd-MM-yyyy}][%d{HH:mm:ss}] [%t/%level] [%logger{35}]: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="pindorama" level="debug"><appender-ref ref="DG"/></logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
