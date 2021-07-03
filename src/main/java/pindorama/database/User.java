@@ -4,6 +4,8 @@ package pindorama.database;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import pindorama.utils.PasswordUtils;
+import pindorama.utils.enums.Genero;
+import pindorama.utils.enums.UserType;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -24,7 +26,7 @@ public class User {
     private String email;
 
     @JsonIgnore
-    @Column(name = "senha",nullable = false)
+    @Column(name = "senha", nullable = false)
     private String password;
 
     @Column(name = "birthdate", nullable = false)
@@ -54,14 +56,15 @@ public class User {
     @Column(name = "salt", nullable = false)
     private String salt;
 
-    public User(){
+    public User() {
     }
 
     public User(String username, String email, String password, Genero genero, String nacionalidade, Date birthDate) {
         this.username = username;
         this.email = email;
         this.salt = PasswordUtils.getSalt(70);
-        this.password = PasswordUtils.generateSecurePassword(password, salt);;
+        this.password = PasswordUtils.generateSecurePassword(password, salt);
+        ;
         this.genero = genero;
         this.userType = UserType.USER;
         this.nacionalidade = nacionalidade;
@@ -69,11 +72,5 @@ public class User {
         this.creationDate = new Date(System.currentTimeMillis());
     }
 
-    private enum UserType {
-        USER, MODERATOR, ADM
-    }
 
-    public enum Genero {
-        M, F, O
-    }
 }
