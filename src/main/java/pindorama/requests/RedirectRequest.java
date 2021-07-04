@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/v1")
-public class Redirect {
+public class RedirectRequest {
 
     @GetMapping("redirect/adm")
     public ModelAndView redirectToAdm(HttpServletRequest request) {
@@ -19,15 +19,20 @@ public class Redirect {
         var session = request.getSession(false);
 
         if(session == null){
-            return new ModelAndView("redirect:/index.jsp");
+            return new ModelAndView("redirect:/index");
         }
 
         var user = (User) session.getAttribute("user");
 
         if (user.getUserType() == UserType.ADM) {
-            return new ModelAndView("redirect:/adm/adm.jsp");
+            return new ModelAndView("redirect:/controller/panel");
         }
 
-        return new ModelAndView("redirect:/index.jsp");
+        return new ModelAndView("redirect:/index");
+    }
+
+    @GetMapping(path = "/")
+    public String welcomePindoramaApi() {
+        return "Pindorama API: 1.0v";
     }
 }

@@ -14,7 +14,7 @@ import pindorama.database.services.UserService;
 import java.io.*;
 import java.util.Base64;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1")
 public class TestUploadFile {
 

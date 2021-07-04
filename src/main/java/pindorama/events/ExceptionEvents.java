@@ -11,7 +11,7 @@ import pindorama.utils.ErrorInfo;
 
 import javax.servlet.http.HttpServletRequest;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class ExceptionEvents {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
