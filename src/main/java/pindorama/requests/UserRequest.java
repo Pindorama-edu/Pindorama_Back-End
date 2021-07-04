@@ -120,4 +120,16 @@ public class UserRequest {
         userRepository.save(user);
     }
 
+
+    @RequestMapping(method = RequestMethod.GET, path = "/logout")
+    public void doLogout(HttpServletRequest request) {
+        var session = request.getSession(false);
+
+        if (session != null) {
+            System.out.println(session.getAttribute("name") + " : " + session.getId());
+            session.removeAttribute("name");
+            session.invalidate();
+        }
+    }
+
 }
