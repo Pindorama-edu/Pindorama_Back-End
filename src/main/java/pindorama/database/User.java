@@ -64,13 +64,11 @@ public class User {
         this.email = email;
         this.salt = PasswordUtils.getSalt(70);
         this.password = PasswordUtils.generateSecurePassword(password, salt);
-        ;
         this.genero = genero;
         this.userType = UserType.USER;
         this.nacionalidade = nacionalidade;
         this.birthDate = birthDate;
         this.creationDate = new Date(System.currentTimeMillis());
     }
-
 
 }
