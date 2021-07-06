@@ -7,7 +7,7 @@ $(document).ready(function() {
     teste();
 
     async function teste() {
-        var j = ["./Images/Computador.jpg", "./Images/Palmeiras.jpg"];
+        var j = ["../Images/Computador.jpg", "../Images/Palmeiras.jpg"];
         $("#mydiv").css("background-image", "url(j[i])");
         for (var i = 0; i < j.length; i++) {
             $("#mydiv").css("background-image", "url(" + j[i] + ")");

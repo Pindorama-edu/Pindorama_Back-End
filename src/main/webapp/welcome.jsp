@@ -9,7 +9,7 @@
 </head>
 <c:if test="${user == null}">
     <%Thread.sleep(2000);%>
-    <c:redirect url="/index.jsp"/>
+    <c:redirect url="/"/>
 </c:if>
 
 <%Thread.sleep(2000);%>

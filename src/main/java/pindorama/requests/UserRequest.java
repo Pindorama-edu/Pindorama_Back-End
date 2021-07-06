@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,19 +58,19 @@ public class UserRequest {
                     session.setAttribute("message", "Senha email/senha inválidos");
 
 
-                    return "redirect:/index";
+                    return "redirect:/";
                 }
             } else {
                 session.setAttribute("message", "Senha email/senha inválidos");
 
-                return "redirect:/index";
+                return "redirect:/";
             }
 
         } catch (Exception ex) {
             logger.error("Erro ao logar", ex);
             request.getSession().setAttribute("message", ex);
 
-            return "redirect:/index";
+            return "redirect:/";
         }
     }
 
@@ -80,7 +81,7 @@ public class UserRequest {
     @RequestMapping(method = RequestMethod.POST, path = "/register")
     public String doRegister(@RequestParam String nome, @RequestParam String email,
                              @RequestParam String password, @RequestParam String nacionalidade,
-                             @RequestParam String genero, @RequestParam String nascimento, HttpServletRequest request) {
+                             @RequestParam String genero, @RequestParam String nascimento, HttpServletRequest request, Model model) {
 
 
         if (request.getSession(false) != null) {
@@ -90,20 +91,20 @@ public class UserRequest {
         var user = userRepository.findByEmail(email);
 
         var session = request.getSession();
-
+        model.addAttribute("id", "cadastro");
         if (user == null) {
 
             createUser(new User(nome, email, password, convertGenero(genero), nacionalidade, Date.valueOf(nascimento)));
             session.setAttribute("signupSuccess", "Cadastrado com sucesso");
-            return "redirect:/index.jsp";
+            return "redirect:/";
 
         } else if (user.getEmail().equals(email)) {
             session.setAttribute("signupError", "Esse email já está cadastrado.");
-            return "redirect:/index.jsp";
+            return "redirect:/";
         }
 
         session.setAttribute("message", "Esse email já está cadastrado.");
-        return "redirect:/index.jsp";
+        return "redirect:/";
     }
 
     private Genero convertGenero(String genero) {
