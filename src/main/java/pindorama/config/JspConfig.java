@@ -29,6 +29,7 @@ public class JspConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/materias/**").addResourceLocations("/materias/");
         registry.addResourceHandler("/Hamburger_icon.svg.png").addResourceLocations("/Hamburger_icon.svg.png");
         registry.addResourceHandler("/favicon/**").addResourceLocations("/favicon/");
         registry.addResourceHandler("/Images/**").addResourceLocations("/Images/");

@@ -53,7 +53,7 @@ public class UserRequest {
                     session.setMaxInactiveInterval(80 * 60);
 
 
-                    return "redirect:/welcome";
+                    return "redirect:/materias";
                 } else {
                     session.setAttribute("message", "Senha email/senha inválidos");
 
@@ -94,6 +94,11 @@ public class UserRequest {
         model.addAttribute("id", "cadastro");
         if (user == null) {
 
+            if(password.length() > 16){
+                session.setAttribute("signupError", "A senha não pode ser maior que 16 caracteres.");
+                return "redirect:/";
+            }
+
             createUser(new User(nome, email, password, convertGenero(genero), nacionalidade, Date.valueOf(nascimento)));
             session.setAttribute("signupSuccess", "Cadastrado com sucesso");
             return "redirect:/";
@@ -103,7 +108,7 @@ public class UserRequest {
             return "redirect:/";
         }
 
-        session.setAttribute("message", "Esse email já está cadastrado.");
+        session.setAttribute("signupError", "Internal Server Error!");
         return "redirect:/";
     }
 

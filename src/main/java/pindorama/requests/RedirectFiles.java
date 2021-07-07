@@ -21,4 +21,9 @@ public class RedirectFiles {
     public String controller() {
         return "adm/adm";
     }
+
+    @RequestMapping("/materias")
+    public String materias() {
+        return "/materias/materias";
+    }
 }

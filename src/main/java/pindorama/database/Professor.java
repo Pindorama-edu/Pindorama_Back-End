@@ -1,26 +1,24 @@
 package pindorama.database;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import pindorama.utils.PasswordUtils;
 import pindorama.utils.enums.Genero;
-import pindorama.utils.enums.UserType;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "professor")
 @Data
-public class User {
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+    @Column(name = "nome", nullable = false)
+    private String name;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -29,50 +27,47 @@ public class User {
     @Column(name = "senha", nullable = false)
     private String password;
 
-    @Column(name = "birthdate", nullable = false)
-    private Date birthDate;
+    @JsonIgnore
+    @Column(name = "salt", nullable = false)
+    private String salt;
 
-    @Column(name = "tipo", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private UserType userType;
+    @Column(name = "data_nascimento", nullable = false)
+    private Date birthDate;
 
     @Column(name = "genero", nullable = false)
     @Enumerated(EnumType.STRING)
     private Genero genero;
 
-    @Column(name = "nacionalidade", nullable = false)
+    @Column(name = "nacionalidade")
     private String nacionalidade;
 
-    @Column(name = "status", nullable = false)
-    private int status;
+    @Column(name = "avaliacao", nullable = false)
+    private float avaliacao;
 
     @Column(name = "data_criacao", nullable = false, updatable = false)
     private Date creationDate;
 
-    @Column(name = "foto", nullable = true)
+    @Column(name = "status_conta", nullable = false)
+    private int status;
+
+    @Column(name = "foto", nullable = false)
     private byte[] picture;
 
     @JsonIgnore
     @Column(name = "mediatype")
     private String mediaType;
 
-    @JsonIgnore
-    @Column(name = "salt", nullable = false)
-    private String salt;
-
-    public User() {
-    }
-
-    public User(String username, String email, String password, Genero genero, String nacionalidade, Date birthDate) {
-        this.username = username;
-        this.email = email;
-        this.salt = PasswordUtils.getSalt(70);
+    public Professor(String name, String password, Date birthDate, Genero genero, String nacionalidade){
+        this.name = name;
+        this.password = PasswordUtils.getSalt(90);
         this.password = PasswordUtils.generateSecurePassword(password, salt);
-        this.genero = genero;
-        this.userType = UserType.USER;
-        this.nacionalidade = nacionalidade;
         this.birthDate = birthDate;
+        this.genero = genero;
+        this.nacionalidade = nacionalidade;
         this.creationDate = new Date(System.currentTimeMillis());
     }
 
+    public Professor() {
+
+    }
 }

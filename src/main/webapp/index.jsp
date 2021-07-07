@@ -12,12 +12,12 @@
 
     <!-- FavIcon   -->
 
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon"/>
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" href="./favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="wrap-input100 validate-input " data-validate="Password is required">
-                                <input class="input100 input100l " type="password" name="password" placeholder="Senha"
+                                <input class="input100 input100l " type="password" name="password" placeholder="Senha" maxlength="16"
                                        required>
                                 <span class="focus-input100 "></span>
                                 <span class="symbol-input100 ">
@@ -147,7 +147,7 @@
                                     <span class="txt1 ">
                                         Não quer logar?
                                     </span>
-                                <a class="txt2 " href="# ">
+                                <a class="txt2 " href="/materias">
                                     Entre como convidado
                                     <i class="fa fa-long-arrow-right m-l-5 " aria-hidden="true"></i>
                                 </a>
@@ -184,7 +184,7 @@
                             </div>
 
                             <div class="wrap-input100 validate-input ">
-                                <input class="input100 input100c " type="password" name="password" placeholder="Senha "
+                                <input class="input100 input100c " type="password" name="password" placeholder="Senha " maxlength="16"
                                        required>
                                 <span class="focus-input100 "></span>
                             </div>
