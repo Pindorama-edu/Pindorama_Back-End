@@ -3,26 +3,23 @@ package pindorama.requests;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.io.UrlResource;
+import org.springframework.core.io.support.ResourceRegion;
+import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pindorama.database.Conteudo;
 import pindorama.database.Materias;
 import pindorama.database.repos.ConteudoRepository;
 import pindorama.database.repos.MateriasRepository;
 import pindorama.utils.ProgressObservableInputStream;
+import pindorama.utils.RandomString;
 
 import java.io.*;
 import java.sql.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/api/v1/conteudo")
@@ -48,7 +45,7 @@ public class ConteudoRequest {
 
             byte[] buffer = new byte[4096];
 
-            String path = getDataFolder().getPath() + System.getProperty("file.separator") + UUID.randomUUID() + System.getProperty("file.separator") + file.getResource().getFilename();
+            String path = getDataFolder().getPath() + System.getProperty("file.separator") + new RandomString().nextString() + System.getProperty("file.separator") + file.getResource().getFilename();
 
             File files = new File(path);
 
@@ -77,7 +74,7 @@ public class ConteudoRequest {
 
                 double now = stream.getPercentage();
                 if (now > cache)
-                    logger.info("Recebendo o arquivo {} {}% \n  {}/{}", file.getResource().getFilename(), stream.getPercentage(), stream.getSize(fileOut.getChannel().size()), stream.getSize(file.getSize()));
+                    logger.debug("Recebendo o arquivo {} {}% \n  {}/{}", file.getResource().getFilename(), stream.getPercentage(), stream.getSize(fileOut.getChannel().size()), stream.getSize(file.getSize()));
 
                 cache = now;
             }
@@ -85,19 +82,19 @@ public class ConteudoRequest {
             Conteudo conteudo = new Conteudo(name, descricao, materiaId, professorId, palavras, new Date(System.currentTimeMillis()), file.getContentType());
 
 
-            conteudo.setVideo(path);
+            conteudo.setVideo(path.replace(getDataFolder().getAbsolutePath(), ""));
 
             repository.save(conteudo);
 
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Sucess");
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Houve um erro ao tentar enviar o arquivo");
         }
     }
 
     @Async
-    @GetMapping("/getConteudo")
-    public ResponseEntity<byte[]> getConteudo(long videoId) throws IOException {
+    @GetMapping("/getConteudo/{id}")
+    public ResponseEntity<ResourceRegion> getConteudo(@PathVariable("id") long videoId, @RequestHeader HttpHeaders headers) throws IOException {
 
         var file = repository.findConteudoById(videoId);
 
@@ -105,18 +102,11 @@ public class ConteudoRequest {
             return ResponseEntity.ok().contentType(MediaType.valueOf("video/mp4")).body(null);
         }
 
-        FileInputStream inputStream = new FileInputStream(file.getVideo());
-
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(300);
-
-        byte[] bytes = new byte[4064];
-
-        int read;
-        while ((read = inputStream.read(bytes)) != -1) {
-            outputStream.write(bytes, 0, read);
-        }
-
-        return ResponseEntity.ok().contentType(MediaType.valueOf(file.getMediaType())).body(outputStream.toByteArray());
+        var video = new UrlResource("file:"+ getDataFolder().getAbsolutePath() + file.getVideo());
+        var region = resourceRegion(video, headers);
+        return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
+                .contentType(MediaTypeFactory.getMediaType(video).orElse(MediaType.APPLICATION_OCTET_STREAM))
+                .body(region);
     }
 
     @GetMapping("/conteudos")
@@ -131,5 +121,21 @@ public class ConteudoRequest {
 
     public static File getDataFolder() {
         return new File(System.getProperty("user.dir"), "data");
+    }
+
+    private ResourceRegion resourceRegion(UrlResource video, HttpHeaders headers) throws IOException {
+        var contentLength = video.contentLength();
+        var range = headers.getRange().stream().findFirst().orElse(null);
+
+        if(range != null){
+            var start = range.getRangeStart(contentLength);
+            var end = range.getRangeEnd(contentLength);
+            var rangeLength = Math.min(1000000L, end - start + 1);
+            return new ResourceRegion(video, start, rangeLength);
+        }
+
+        var rangeLength = Math.min(1000000L, contentLength);
+
+        return new ResourceRegion(video, 0, rangeLength);
     }
 }
