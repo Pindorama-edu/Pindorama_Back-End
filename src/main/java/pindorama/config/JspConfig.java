@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import pindorama.requests.ConteudoRequest;
 
 @Configuration
 @EnableWebMvc
@@ -29,6 +30,7 @@ public class JspConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/internal/**").addResourceLocations("/internal/");
         registry.addResourceHandler("/materias/**").addResourceLocations("/materias/");
         registry.addResourceHandler("/Hamburger_icon.svg.png").addResourceLocations("/Hamburger_icon.svg.png");
         registry.addResourceHandler("/favicon/**").addResourceLocations("/favicon/");
@@ -38,4 +40,5 @@ public class JspConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
         registry.addResourceHandler("/fonts/**").addResourceLocations("/fonts/");
     }
+
 }

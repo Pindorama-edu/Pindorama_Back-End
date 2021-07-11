@@ -13,4 +13,6 @@ public interface ConteudoRepository extends JpaRepository<Conteudo, Long> {
     Conteudo findConteudoById(long id);
 
     List<Conteudo> findConteudoByMateria(int materia);
+
+    int countByMateria(int id);
 }

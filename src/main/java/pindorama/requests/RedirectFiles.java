@@ -1,6 +1,7 @@
 package pindorama.requests;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,13 +18,24 @@ public class RedirectFiles {
         return "welcome";
     }
 
-    @RequestMapping("/controller/panel")
+    @RequestMapping("/materias/painel")
     public String controller() {
         return "adm/adm";
     }
 
     @RequestMapping("/materias")
     public String materias() {
-        return "/materias/materias";
+        return "/materias/modulos";
     }
+
+    @RequestMapping("/aula")
+    public String aula() {
+        return "/materias/aula";
+    }
+
+    @RequestMapping("/materia/{nome}")
+    public String materia(@PathVariable String nome) {
+        return "/materias/" + nome;
+    }
+
 }

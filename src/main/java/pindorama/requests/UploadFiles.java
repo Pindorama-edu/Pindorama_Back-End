@@ -61,5 +61,4 @@ public class UploadFiles {
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(user.getMediaType())).body(pic);
     }
 
-
 }
