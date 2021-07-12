@@ -34,7 +34,7 @@ public class UploadFiles {
         }
 
         if (pic == null) {
-            return ResponseEntity.ok().body("Cannot covert picture to bytes.");
+            return ResponseEntity.ok().body("Cannot covert picture.");
         }
 
         user.setPicture(pic);

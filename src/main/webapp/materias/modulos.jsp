@@ -20,10 +20,11 @@
     <!-- Bootstrap -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="text/javascript" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link rel="text/javascript"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
     <!-- Style.css -->
 
     <script type=" text/javascript " src="https://www.amcharts.com/lib/3/amcharts.js "></script>
@@ -35,54 +36,53 @@
 </head>
 
 <body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-    </header>
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div> 
-                <a href="/materias" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Pindorama</span> </a>
-                <div class="nav_list"> <a href="#" class="nav_link"> 
-                    <i class='bx bx-grid-alt nav_icon'></i> 
-                    <span class="nav_name">Matérias</span> 
-                </a> 
-                <a href="/" class="nav_link">
-                    <i class='bx bx-user nav_icon'></i> 
-                    <span class="nav_name">Perfil</span> 
-                </a> 
-                <a href="/" class="nav_link">
-                    <i class='bx bx-message-square-detail nav_icon'></i>
-                     <span class="nav_name">Fórum</span>
-                </a> <a href="#" class="nav_link active">
-                    <i class='bx bx-bookmark nav_icon'></i>
-                     <span class="nav_name">Sobre</span>
-                </a> 
-                <a href="#" class="nav_link"> 
-                    <i class='bx bx-folder nav_icon'></i> 
-                    <span class="nav_name">Arquivos</span> 
-                </a> 
-                <a href="#" class="nav_link"> </a> </div>
-                </div> <a href="#" class="nav_link"> 
-                    <i class='bx bx-log-out nav_icon'></i> 
-                    <span class="nav_name">Sair</span> 
+<header class="header" id="header">
+    <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+</header>
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div>
+            <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Pindorama</span>
+            </a>
+            <div class="nav_list"><a href="/materias" class="nav_link">
+                <i class='bx bx-grid-alt nav_icon'></i>
+                <span class="nav_name active">Matérias</span>
+            </a>
+                <c:url value="/perfil?id=${user.id}" var="perfil"/>
+                <a href="${perfil}" class="nav_link">
+                    <i class='bx bx-user nav_icon'></i>
+                    <span class="nav_name">Perfil</span>
                 </a>
-        </nav>
-    </div>
-    <!--Tela de matérias-->
-    <div class="bodyMaterias">
-        <div class="titulo">
-            <strong class="nomeMateria">
-                <header>
-                    <h1>Matérias</h1>
-                </header>
-                <div class="iconeMaterias d-flex">
-                    Tecnologia
-
-                </div>
-            </strong>
+                <a href="#" class="nav_link" hidden>
+                    <i class='bx bx-message-square-detail nav_icon'></i>
+                    <span class="nav_name">Fórum</span>
+                </a> <a href="/sobre" class="nav_link">
+                    <i class='bx bx-bookmark nav_icon'></i>
+                    <span class="nav_name">Sobre</span>
+                </a>
+            </div>
         </div>
-        <div class="d-flex" style="gap: 20px; padding: 10px">
-            <a class="modlink1 card d-flex flex-column justify-content-between" href="/materia/python">
+        <a href="/logout" class="nav_link">
+            <i class='bx bx-log-out nav_icon'></i>
+            <span class="nav_name">Sair</span>
+        </a>
+    </nav>
+</div>
+<!--Tela de matérias-->
+<div class="bodyMaterias">
+    <div class="titulo">
+        <strong class="nomeMateria">
+            <header>
+                <h1>Matérias</h1>
+            </header>
+            <div class="iconeMaterias d-flex">
+                Tecnologia
+
+            </div>
+        </strong>
+    </div>
+    <div class="d-flex" style="gap: 20px; padding: 10px">
+        <a class="modlink1 card d-flex flex-column justify-content-between" href="/materia/python">
                 <span class="card d-flex flex-column justify-content-between">
                     <span class="body">
                         Python
@@ -95,8 +95,8 @@
                         Ver Módulos
                     </span>
                 </span>
-            </a>
-            <a class="modlink1 card d-flex flex-column justify-content-between" href="#">
+        </a>
+        <a class="modlink1 card d-flex flex-column justify-content-between" href="#">
                 <span class="card d-flex flex-column justify-content-between">
 
                     <span class="body">
@@ -110,22 +110,27 @@
                         Ver Módulos
                     </span>
                 </span>
-            </a>
-        </div>
+        </a>
     </div>
-               
-    <!--JavaScript-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js "
+</div>
+<footer class="rodape">
+    <p>Copyright © 2021 Pindorama.edu</p>
+    <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+</footer>
+
+
+<!--JavaScript-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js "
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj "
         crossorigin="anonymous "></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js "
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js "
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns "
         crossorigin="anonymous "></script>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="../materias/materias.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../internal/scripts/modulos.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="../materias/materias.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../internal/scripts/modulos.js"></script>
 </body>
 </html>

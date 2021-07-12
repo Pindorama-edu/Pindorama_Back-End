@@ -43,7 +43,7 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    
+
     z-index: var(--z-fixed);
     transition: .5s
 }
@@ -483,9 +483,15 @@ header {
     display: flex;
 }
 .rodape{
-    margin-top: 40px; 
-    width: 100%;
-  
+    margin: 545px 0 -183px -36px;
+    background-color: black;
+    text-align: center;
+
+}
+
+.rodape p, .rodape a{
+    text-decoration: none;
+    color: #827baf;
 }
 
 @media screen and (max-width:767px) {

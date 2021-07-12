@@ -49,6 +49,7 @@ public class User {
     @Column(name = "data_criacao", nullable = false, updatable = false)
     private Date creationDate;
 
+    @JsonIgnore
     @Column(name = "foto", nullable = true)
     private byte[] picture;
 

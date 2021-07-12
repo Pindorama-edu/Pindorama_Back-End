@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pindorama</title>
 
-
     <!-- FavIcon   -->
 
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
@@ -39,6 +38,11 @@
 
 <body>
 
+
+<c:if test="${user != null}">
+    <c:redirect url="/materias"/>
+</c:if>
+
 <div class="w-100 h-100">
     <div id="mydiv"></div>
     <div class="nav-a">
@@ -61,7 +65,7 @@
 
                     <div class="col animation-element slide-left" id="login">
 
-                        <div class="d-flex justify-content-center logo-resp"><img src=" ./Images/pindorama_img.png "
+                        <div class="d-flex justify-content-center logo-resp"><img src=" ./Images/logo.png "
                                                                                   alt=" "
                                                                                   style="max-width: 100%;height: auto; object-fit: cover;">
                         </div>
@@ -255,7 +259,7 @@
                 <div class="row align-items-center w-100 h-100 m-0 justify-content-center ">
 
                     <div class="col-6 animation-element slide-bottom ">
-                        <img src="./Images/pindorama_img.png " alt="Logo Pindorama " class="img-fluid ">
+                        <img src="./Images/logo.png " alt="Logo Pindorama " class="img-fluid ">
                         <div class="slogan ">Conhecimento de todo Brasil<br>reunido em um só portal</div>
                     </div>
                 </div>

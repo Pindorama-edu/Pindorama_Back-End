@@ -688,3 +688,9 @@ footer .footerNote {
         background-color: rgba(0, 0, 0, 0.5);
     }
 }
+
+
+.img-fluid {
+    max-width: 70%;
+    margin-left: 4rem;
+}

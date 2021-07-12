@@ -33,9 +33,24 @@ public class RedirectFiles {
         return "/materias/aula";
     }
 
+    @RequestMapping("/sobre")
+    public String about() {
+        return "/about/sobre";
+    }
+
+    @RequestMapping("/perfil")
+    public String perfil() {
+        return "/perfil/perfil";
+    }
+
     @RequestMapping("/materia/{nome}")
     public String materia(@PathVariable String nome) {
         return "/materias/" + nome;
+    }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        return "redirect:/api/v1/logout";
     }
 
 }
