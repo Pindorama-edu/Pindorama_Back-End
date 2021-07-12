@@ -148,7 +148,6 @@ public class UserRequest {
     public ResponseEntity<String> updateUser(@PathVariable long id,
             @RequestBody String body, HttpServletRequest request) {
         try {
-            System.out.println(body);
             JSONObject object = new JSONObject(body);
 
 //            var session = request.getSession(false);
@@ -185,7 +184,6 @@ public class UserRequest {
                 user.setSalt(salt);
 
                 var pass = PasswordUtils.generateSecurePassword(password, salt);
-                System.out.println("Senha: " + pass);
 
                 user.setPassword(pass);
             }
@@ -194,7 +192,6 @@ public class UserRequest {
                 user.setBirthDate(Date.valueOf(birthdate));
             }
 
-            System.out.println("Salvando...");
             userRepository.save(user);
 
 

@@ -494,6 +494,16 @@ header {
     color: #827baf;
 }
 
+#downloadButton {
+    padding: 15px 10px;
+    background-color: #a49bd2;
+    display: block;
+    max-width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 @media screen and (max-width:767px) {
     .bodyMaterias {
         padding-left: 3rem;

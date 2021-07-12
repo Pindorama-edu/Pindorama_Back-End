@@ -30,6 +30,7 @@ public class JspConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/arquivos/**").addResourceLocations("/arquivos/");
         registry.addResourceHandler("/about/**").addResourceLocations("/about/");
         registry.addResourceHandler("/internal/**").addResourceLocations("/internal/");
         registry.addResourceHandler("/materias/**").addResourceLocations("/materias/");

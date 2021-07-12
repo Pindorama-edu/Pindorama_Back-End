@@ -91,17 +91,11 @@
                 <div class="team-front">
                     <img src="../Images/sobre/humanas.jpg" class="img-fluid"/>
                     <h3>Humanas</h3>
-                    <p>Web Designer</p>
                 </div>
 
                 <div class="team-back">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque penatibus et magnis dis parturient montes,
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque.
+                            Em qual região do mundo você se encontra? O que é uma sociedade? Ser ou não ser? Porque o império romano caiu? Na área de humanas, tudo isso é questionado, e manter-se atualizado é essencial.
                         </span>
                 </div>
 
@@ -121,12 +115,7 @@
 
                 <div class="team-back">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque penatibus et magnis dis parturient montes,
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque.
+                            Português é a nossa língua materna, além de bela, é muito complexa e seu constante estudo é obrigatório para se obter o dominio do idioma.
                         </span>
                 </div>
 
@@ -141,17 +130,11 @@
                 <div class="team-front">
                     <img src="../Images/sobre/matematica.jpg" class="img-fluid"/>
                     <h3>Matematica</h3>
-                    <p>Web Designer</p>
                 </div>
 
                 <div class="team-back">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque penatibus et magnis dis parturient montes,
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque.
+                            Matemática é uma das principais areas do conhecimento, sua importância se deve ao fato de que tudo está diretamente ou indiretamente ligada a ela, venha entender um pouco mais sobre todo esse universo com a gente.
                         </span>
                 </div>
 
@@ -165,18 +148,13 @@
 
                 <div class="team-front">
                     <img src="../Images/sobre/natureza.jpg" class="img-fluid"/>
-                    <h3>Natureza</h3>
-                    <p>Web Designer</p>
+                    <h3>Ciências da Natureza</h3>
                 </div>
 
                 <div class="team-back">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque penatibus et magnis dis parturient montes,
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque.
+
+Biologia, física, química, o estudo da vida e de como ela funciona, desde como um átomo funciona, até porque  um avião consegue se manter voando.
                         </span>
                 </div>
 
@@ -196,12 +174,7 @@
 
                 <div class="team-back">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque penatibus et magnis dis parturient montes,
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque.
+                          Python, Java, PHP, e JS, o que estas linguagens de programação tem em comum? A resposta é simples: você poderá estudar todas de maneira gratuita aqui no Pindorama.
                         </span>
                 </div>
 
@@ -216,17 +189,12 @@
                 <div class="team-front">
                     <img src="../Images/sobre/tecnologia.jpg" class="img-fluid"/>
                     <h3>Tecnologia</h3>
-                    <p>Web Designer</p>
+
                 </div>
 
                 <div class="team-back">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque penatibus et magnis dis parturient montes,
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis
-                            natoque.
+                           Hoje em dia, a tecnologia faz parte das nossas vidas e é muito importante que saibamos como usá-la de forma adequada para atingir nossos objetivos!
                         </span>
                 </div>
 

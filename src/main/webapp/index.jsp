@@ -1,4 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -45,10 +44,7 @@
 
 <div class="w-100 h-100">
     <div id="mydiv"></div>
-    <div class="nav-a">
-        <img src="Hamburger_icon.svg.png" alt="" class="ham" id="ham">
-    </div>
-
+    
     <div class="menu-lateral show-left" id="menu">
         <div class="d-flex flex-column">
 
@@ -67,7 +63,7 @@
 
                         <div class="d-flex justify-content-center logo-resp"><img src=" ./Images/logo.png "
                                                                                   alt=" "
-                                                                                  style="max-width: 100%;height: auto; object-fit: cover;">
+                                                                                  style="max-width: 70%; height: auto; object-fit: cover;  margin: 3rem 0 3rem 3rem;">
                         </div>
 
                         <c:url value="/api/v1/login" var="login_url"/>
