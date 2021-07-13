@@ -110,7 +110,6 @@
                 <div class="team-front">
                     <img src="../Images/sobre/linguagens.jpg" class="img-fluid"/>
                     <h3>Linguagens</h3>
-                    <p>Web Designer</p>
                 </div>
 
                 <div class="team-back">
@@ -169,7 +168,6 @@ Biologia, física, química, o estudo da vida e de como ela funciona, desde como
                 <div class="team-front">
                     <img src="../Images/sobre/programacao.jpg" class="img-fluid"/>
                     <h3>Programação</h3>
-                    <p>Web Designer</p>
                 </div>
 
                 <div class="team-back">
