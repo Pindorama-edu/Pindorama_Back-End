@@ -26,10 +26,10 @@ function getModulosFromID() {
 
     if (aulaID === '28') {
         this.$bodyContent.append(`<video controls="" width="80%" autoplay="" name="media"><source src="${requestUrl}" type="video/mp4"></video>`);
-        this.$bodyContent.append('<a id="downloadButton" href="../../internal/arquivos/Material_Complementar.pdf" download="arquivo_complementar.pdf">Download</a>');
+        this.$bodyContent.append('<a id="downloadButton" href="../../internal/arquivos/Material_Complementar.pdf" download="arquivo_complementar.pdf">Download PDF</a>');
     }
     else if (aulaID === '29') {
         this.$bodyContent.append(`<video controls="" width="80%" autoplay="" name="media"><source src="${requestUrl}" type="video/mp4"></video>`);
-        this.$bodyContent.append('<a id="downloadButton" href="../../internal/arquivos/Material_Complementar_tec.pdf" download="arquivo_complementarTec.pdf">Download</a>');
+        this.$bodyContent.append('<a id="downloadButton" href="../../internal/arquivos/Material_Complementar_tec.pdf" download="arquivo_complementarTec.pdf">Download PDF</a>');
     }
 }
