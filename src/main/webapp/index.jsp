@@ -61,9 +61,9 @@
 
                     <div class="col animation-element slide-left" id="login">
 
-                        <div class="d-flex justify-content-center logo-resp"><img src=" ./Images/logo.png "
+                        <div class="logo-resp"><img src=" ./Images/logo.png "
                                                                                   alt=" "
-                                                                                  style="max-width: 70%; height: auto; object-fit: cover;  margin: 3rem 0 3rem 3rem;">
+                                                                                  style="max-width: 70%; height: auto; object-fit: cover;  margin: 15px 15% 15px 15%;">
                         </div>
 
                         <c:url value="/api/v1/login" var="login_url"/>

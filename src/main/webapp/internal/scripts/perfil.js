@@ -28,10 +28,7 @@ function loadPerfilData () {
     $.ajax({
         url: `https://pindorama.site/api/v1/usuario/${userId}`,
         success: response => {
-            const date = new Date(response['birthDate']);
-            const day = transformDate(date.getDay());
-            const month = transformDate(date.getMonth());
-            this.$perfilAniversario.val(`${date.getFullYear()}-${month}-${day}`);
+            this.$perfilAniversario.val(response['birthDate']);
             this.$perfilEmail.val(response['email']);
             this.$welcomeText.text(`Bem vindo, ${response['username']}`);
         },
@@ -40,15 +37,6 @@ function loadPerfilData () {
         }
     });
 }
-
-function transformDate (number) {
-    if (number < 10) {
-        return `0${number}`;
-    }
-
-    return number;
-}
-
 function updateUserData () {
     const userId = getIdFromURL();
     const data = {

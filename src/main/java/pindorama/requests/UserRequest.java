@@ -1,5 +1,10 @@
 package pindorama.requests;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,14 +16,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import pindorama.database.User;
 import pindorama.database.repos.UserRepository;
 import pindorama.utils.PasswordUtils;
 import pindorama.utils.enums.Genero;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
@@ -131,7 +134,7 @@ public class UserRequest {
     }
 
     @GetMapping({"/usuario/{id}"})
-    public ResponseEntity<User> getUser(@PathVariable(required = false) int id) {
+    public ResponseEntity<String> getUser(@PathVariable(required = false) int id) {
         if (id == 0) {
             return ResponseEntity.ok().body(null);
         }
@@ -139,26 +142,16 @@ public class UserRequest {
         var user = userRepository.findById(id);
 
         if (user != null)
-            return ResponseEntity.ok(user);
+            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(generateJson(user));
 
         return null;
     }
 
     @PatchMapping(value = "usuario/update/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> updateUser(@PathVariable long id,
-            @RequestBody String body, HttpServletRequest request) {
+                                             @RequestBody String body, HttpServletRequest request) {
         try {
             JSONObject object = new JSONObject(body);
-
-//            var session = request.getSession(false);
-
-//            if(session.getAttribute("user") == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("O usuario deve estar logado para isso!");
-//
-//            var user = (User) session.getAttribute("user");
-//
-//            if (user == null) {
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("O usuario deve estar logado para isso!");
-//            }
 
             var user = userRepository.findById(id);
 
@@ -230,4 +223,26 @@ public class UserRequest {
         return "redirect:/";
     }
 
+    private String generateJson(Object tClass) {
+        ExclusionStrategy strategy = new ExclusionStrategy() {
+            @Override
+            public boolean shouldSkipClass(Class<?> clazz) {
+                return false;
+            }
+
+            @Override
+            public boolean shouldSkipField(FieldAttributes field) {
+                return field.getAnnotation(JsonIgnore.class) != null;
+            }
+        };
+
+        Gson gson = new GsonBuilder().addSerializationExclusionStrategy(strategy)
+                .setDateFormat("yyyy-MM-dd")
+                .setPrettyPrinting()
+                .serializeNulls()
+                .create();
+
+        return gson.toJson(tClass);
+
+    }
 }
