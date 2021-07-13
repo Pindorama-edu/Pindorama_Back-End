@@ -106,6 +106,7 @@ a {
 }
 
 .nav_logo-name {
+    margin-top: 7px;
     color: var(--white-color);
     font-weight: 700
 }
@@ -513,4 +514,9 @@ header {
     .bodyMaterias {
         padding-left: 3rem;
     }
+}
+.logo{
+    width: 75px;
+    margin-left: -27px;
+    margin-bottom: -17px;
 }

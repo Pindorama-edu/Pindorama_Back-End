@@ -43,8 +43,8 @@
     <c:url value="/perfil?id=${user.id}" var="perfil"/>
     <nav class="nav">
         <div>
-            <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
-                <span class="nav_logo-name">Pindorama</span> </a>
+            <a href="/" class="nav_logo"> <img class="logo" src="https://cdn.discordapp.com/attachments/837713299763363880/864523395621978132/logoSemFundo.png"> <span class="nav_logo-name">Pindorama</span>
+            </a>
 
             <div class="nav_list">
                 <a href="/materias" class="nav_link active">
@@ -56,10 +56,7 @@
                     <span class="nav_name">Perfil</span>
                 </a>
 
-                <a href="#" class="nav_link" hidden>
-                    <i class='bx bx-message-square-detail nav_icon'></i>
-                    <span class="nav_name">Fórum</span>
-                </a>
+                
 
                 <a href="/sobre" class="nav_link">
                     <i class='bx bx-bookmark nav_icon'></i>
